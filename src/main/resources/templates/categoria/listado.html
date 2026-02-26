@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: section">
+
+<section>
+    <h2>💗 Categorías</h2>
+
+    <a class="boton" th:href="@{/categorias/nuevo}">➕ Nueva Categoría</a>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+
+        <tr th:each="c : ${categorias}">
+            <td th:text="${c.id}"></td>
+            <td th:text="${c.nombre}"></td>
+            <td>
+                <a class="boton"
+                   th:href="@{/categorias/eliminar/{id}(id=${c.id})}">
+                    🗑️
+                </a>
+            </td>
+        </tr>
+    </table>
+</section>
+
+</html>
