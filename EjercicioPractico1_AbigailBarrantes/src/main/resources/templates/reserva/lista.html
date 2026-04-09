@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::section})}">
+
+<section>
+    <h2>📅 Reservas de Citas</h2>
+
+    <a th:href="@{/reservas/nuevo}" class="boton">Nueva Reserva ➕</a>
+
+    <table>
+        <tr>
+            <th>Cliente</th>
+            <th>Fecha</th>
+            <th>Servicio</th>
+            <th>Acciones</th>
+        </tr>
+        <tr th:each="r : ${reservas}">
+            <td th:text="${r.nombreCliente}"></td>
+            <td th:text="${r.fecha}"></td>
+            <td th:text="${r.servicio.nombre}"></td>
+            <td>
+                <a th:href="@{/reservas/eliminar/{id}(id=${r.id})}" 
+                   onclick="return confirm('¿Eliminar esta reserva?')">🗑️</a>
+            </td>
+        </tr>
+    </table>
+</section>
+
+</html>

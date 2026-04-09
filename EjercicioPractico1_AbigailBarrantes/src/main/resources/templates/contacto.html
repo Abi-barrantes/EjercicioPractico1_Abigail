@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::section})}">
+
+<section>
+    <h2>💬 Quejas y Sugerencias</h2>
+    <p>¿Tenés alguna consulta, queja o sugerencia? ¡Nos encantaría escucharte! 💖</p>
+
+    <form th:action="@{/contacto/enviar}" method="post">
+        <label>Tu nombre:</label>
+        <input type="text" name="nombre" placeholder="Tu nombre completo 💕" required>
+
+        <label>Correo electrónico:</label>
+        <input type="email" name="correo" placeholder="tucorreo@ejemplo.com ✉️" required>
+
+        <label>Tu mensaje:</label>
+        <textarea name="mensaje" rows="5" placeholder="Escribí tu mensaje aquí 💖..." required></textarea>
+
+        <br/>
+        <button type="submit">Enviar mensaje ✨</button>
+    </form>
+</section>
+</html>

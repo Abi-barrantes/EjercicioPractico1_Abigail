@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::section})}">
+
+<section>
+    <h2>💅 Servicios</h2>
+
+    <a class="boton" th:href="@{/servicios/nuevo}">➕ Nuevo Servicio</a>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Servicio</th>
+            <th>Categoría</th>
+            <th>Precio (₡)</th>
+            <th>Acciones</th>
+        </tr>
+        <tr th:each="s : ${servicios}">
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.nombre}"></td>
+            <td th:text="${s.categoria.nombre}"></td>
+            <td th:text="${#numbers.formatDecimal(s.precio, 1, 'COMMA', 2, 'POINT')}"></td>
+            <td>
+                <a class="boton" th:href="@{/servicios/editar/{id}(id=${s.id})}">✏️ Editar</a>
+                <a class="boton" th:href="@{/servicios/eliminar/{id}(id=${s.id})}"
+                   onclick="return confirm('¿Eliminar este servicio?')">🗑️ Eliminar</a>
+            </td>
+        </tr>
+    </table>
+</section>
+</html>

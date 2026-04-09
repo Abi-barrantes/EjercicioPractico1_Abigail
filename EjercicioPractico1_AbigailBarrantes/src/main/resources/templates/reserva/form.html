@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::section})}">
+
+<section>
+    <h2>📋 Nueva Reserva</h2>
+
+    <form th:action="@{/reservas/guardar}" th:object="${reserva}" method="post">
+
+        <label>Nombre del Cliente:</label>
+        <input type="text" th:field="*{nombreCliente}" placeholder="Nombre completo 💕" required />
+
+        <label>Fecha de la Cita:</label>
+        <input type="date" th:field="*{fecha}" required />
+
+        <label>Servicio:</label>
+        <select th:field="*{servicio.id}" required>
+            <option value="">-- Seleccione un servicio --</option>
+            <option th:each="s : ${servicios}"
+                    th:value="${s.id}"
+                    th:text="${s.nombre}">
+            </option>
+        </select>
+
+        <br/>
+        <button type="submit">Guardar Reserva ✨</button>
+        <a th:href="@{/reservas}" class="boton">Cancelar</a>
+    </form>
+</section>
+
+</html>

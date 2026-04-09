@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::section})}">
+
+<section>
+    <h2 th:text="${categoria.id != null} ? '✏️ Editar Categoría' : '🌸 Nueva Categoría'">Categoría</h2>
+
+    <form th:action="@{/categorias/guardar}" method="post" th:object="${categoria}">
+        <input type="hidden" th:field="*{id}">
+
+        <label>Nombre de la categoría:</label>
+        <input type="text" th:field="*{nombre}" placeholder="Ej: Cabello, Uñas, Spa..." required>
+
+        <br/>
+        <button type="submit">Guardar 💕</button>
+        <a class="boton" th:href="@{/categorias}">Cancelar</a>
+    </form>
+</section>
+</html>
